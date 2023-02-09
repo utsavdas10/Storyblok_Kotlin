@@ -18,6 +18,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.Executors
 
+//base url
 const val BASE_URL = "https://api.storyblok.com/v2/"
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun getMyData() {
         val retrofitBuilder = Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())//converts json file to Gson
             .baseUrl(BASE_URL)
             .build()
             .create(ApiInterface::class.java)
@@ -61,6 +62,7 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    //converts image url to image
     private fun imgUrlToImg(imageUrl: String) {
         val executor = Executors.newSingleThreadExecutor()
         val handler = Handler(Looper.getMainLooper())
